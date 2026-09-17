@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doc Freshness Radar — Documentation</title>
+<style>
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;line-height:1.7;color:#172b4d}
+  h1{font-size:1.7rem}h2{font-size:1.2rem;margin-top:2em}h3{font-size:1.02rem;margin-top:1.5em}
+  .meta{color:#6b778c;font-size:.9rem}
+  code{background:#f4f5f7;padding:2px 6px;border-radius:3px;font-size:.9em}
+  table{border-collapse:collapse;width:100%;margin:1em 0}
+  th,td{border:1px solid #dfe1e6;padding:8px 12px;text-align:left;font-size:.95rem}
+  th{background:#f4f5f7}
+</style>
+</head>
+<body>
+<h1>Doc Freshness Radar — Documentation</h1>
+<p class="meta">Last updated: September 17, 2026</p>
+
+<p>Doc Freshness Radar finds stale, outdated and abandoned pages in a Confluence space. It scores every page for staleness and uses Atlassian-hosted AI to tell you which pages to archive, rewrite, or keep.</p>
+
+<h2>Getting started</h2>
+<ol>
+  <li>Install the app from the Atlassian Marketplace.</li>
+  <li>Open any Confluence space and select <strong>Doc Freshness Radar</strong> in the space sidebar (under the space's apps).</li>
+  <li>Select <strong>Scan this space</strong>. The scan reads every page in the space, scores it, and sends the riskiest pages to AI for review.</li>
+  <li>Review the table. Each flagged page shows its age, risk score, AI verdict and the reason behind it. Select a page title to open it in Confluence.</li>
+</ol>
+<p>Results are saved per space. The next person to open the app sees the latest report without rescanning. Select <strong>Rescan this space</strong> to refresh.</p>
+
+<h2>How the risk score works</h2>
+<p>Every page is scored from 0 to 100 using these signals:</p>
+<table>
+  <tr><th>Signal</th><th>What it detects</th></tr>
+  <tr><td>Time since last update</td><td>Pages untouched for 3 months, 6 months, a year, or several years</td></tr>
+  <tr><td>Draft markers</td><td>TODO, TBD, FIXME, WIP, DRAFT, and Japanese equivalents (下書き, 作成中, 要更新 and similar)</td></tr>
+  <tr><td>Outdated year references</td><td>Pages whose newest mentioned year is two or more years in the past</td></tr>
+  <tr><td>Stubs</td><td>Pages with very little content</td></tr>
+  <tr><td>Empty pages</td><td>Pages with no body content at all</td></tr>
+</table>
+<p>Pages scoring above zero are flagged. The highest-scoring pages are then analyzed by AI.</p>
+
+<h2>AI verdicts</h2>
+<table>
+  <tr><th>Verdict</th><th>Meaning</th></tr>
+  <tr><td>stale</td><td>Clearly outdated or abandoned. Archive it or rewrite it.</td></tr>
+  <tr><td>review</td><td>Probably needs a human to check before deciding.</td></tr>
+  <tr><td>fresh</td><td>Still accurate. Leave it alone.</td></tr>
+</table>
+<p>Each verdict comes with a one-sentence reason drawn from the page's actual content. AI output is advisory: you decide what to do with each page.</p>
+
+<h2>Permissions and data handling</h2>
+<ul>
+  <li><strong>Read pages and spaces</strong> — needed to scan page content and metadata. The app never edits or deletes pages.</li>
+  <li><strong>App storage</strong> — stores scan results (page titles, scores, verdicts) inside Atlassian's Forge storage, within your site's data boundary. Page bodies are not stored.</li>
+  <li><strong>AI</strong> — runs on Atlassian-hosted models (Forge LLMs). Content is never sent to any third-party AI provider or to any system outside Atlassian. The app has no external network egress.</li>
+</ul>
+<p>See the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</p>
+
+<h2>Limits</h2>
+<ul>
+  <li>A scan covers up to 1,000 pages per space. Larger spaces are scanned partially; support for bigger spaces is on the roadmap.</li>
+  <li>AI review covers the 10 highest-risk pages per scan. Remaining flagged pages still show their score and signals.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<h3>The scan reports fewer pages than the space contains</h3>
+<p>The app scans pages the app has permission to read, up to the 1,000-page limit. Restricted pages are not included.</p>
+<h3>No AI verdicts appear</h3>
+<p>AI verdicts are only generated for pages with a risk score above zero. If nothing is flagged, no AI review runs.</p>
+<h3>The app does not appear in the space sidebar</h3>
+<p>Confirm the app is installed for Confluence, then reload the space. Space administrators can manage apps from the space settings.</p>
+
+<h2>Support</h2>
+<p>Email <a href="mailto:asano.aerospace@gmail.com">asano.aerospace@gmail.com</a>. We aim to respond within two business days.</p>
+</body>
+</html>
